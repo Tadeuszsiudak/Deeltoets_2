@@ -1,352 +1,154 @@
-/* General styles, mobile first */
 * {
-	box-sizing:border-box;
+        margin: 0;
+        padding: 0;
 }
 
-.black_overlay{
-	display: none;
+
+article > section {
+        display: none;
+        margin-top: 1em;
+}
+
+section.active {
+        display: block;
+}
+
+
+/* Here will be standard styles */
+
+
+body{
+        background-color: #efefef;
+        font-family: Helvetica, Verdana, sans-serif; 
+    font-weight: normal; 
+    font-size: 90%;
+    line-height: 140%;
+
+}
+header{
+color: white;
+padding-top: 20px;
+width: 100%;
+margin: auto;
+}
+
+
+body > header{
+        background-color: #afc1e1;
+        text-align: center;
+}
+body > header h1{
+        font-size: 90%;
+        height: 50px;
+}
+
+body > header h1 span{
+        font-size: 90%
+}
+
+section > h1 {
+        width: 100%;
+        margin: auto;
+}
+
+/* Menu */
+nav{
+        background:#a3b3d0;
+        margin-top: -1em;
+        font-size: 80%
+}
+
+nav a {
+color: white;
+}
+nav ul{
+        margin: 0;
+        text-align: center;
+}
+nav ul li{
+        display: inline-block;
+        margin: 0 1em;
+}
+nav ul li a:hover{
+        background-color:#597ab5;
+}
+
+/* Table */
+table{
+        width: 100%;
+        margin: auto;
+        background-color: #99a8c4;
+        margin-bottom: 1em;
+		color: white;
+}
+
+table a{
+		color: white;	
+}
+tr{
+        text-align: center;
+}
+tr:nth-child(even){
+        background-color: #5e7aad;
+}
+td{
+		height: 90px;
+}
+
+#update{
+position: relative;
+bottom: 40px;
+font-size: 30px;
+}
+#plus1, #plus2 {
+        cursor: pointer;
+}
+
+#schedule-load {
 	position: absolute;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	z-index:1001;
-	-moz-opacity: 0.8;
-	opacity:.80;
-	filter: alpha(opacity=80);
+	left: 50%;
+     border-radius: 10px;
+	padding: 25px 25px 20px 25px;
+	width: 250px;
+	margin: 50px auto;
+	margin-top: 
+ }
+ 
+ 
+
+#schedule-load img {
+     float: center;
+     margin-top: -5px;
+ }
+.score{
+font-weight: bold;
 }
 
-#loading {
-	display: none;
-	position: absolute;
-	left:50%;
-	padding: 32px;
-	z-index:1002;
-	overflow: auto;
-    background-image: url(loadinfo.net.gif);
-    background-repeat: no-repeat
-}
-
-table { 
-	border:2px solid white;  
-	border-radius:10px;
-	background-color: white;
-	text-shadow: 1px 1px 0px #fff;
-	-moz-box-shadow: 0 1px 2px #d1d1d1;
-	-webkit-box-shadow: 0 1px 2px #d1d1d1;
-	box-shadow: 0 1px 2px #d1d1d1;
-	width:100%;
-	height:100%;
-}
-th {
-	padding:21px 25px 22px 25px;
-	border-top:1px solid #ededed;
-	background: #ededed;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
-}
-
-td {
-	border:0;
-}
-
-table tr:first-child th:first-child {
-	-moz-border-radius-topleft:3px;
-	-webkit-border-top-left-radius:3px;
-	border-top-left-radius:3px;
-}
-table tr:first-child th:last-child{
-	-moz-border-radius-topright:3px;
-	-webkit-border-top-right-radius:3px;
-	border-top-right-radius:3px;
-}
-table tr {
-	text-align: center;
-	padding-left:20px;
-}
-table td:first-child {
-	text-align: left;
-	padding-left:20px;
-	border-left: 0;
-}
-
-table tbody tr:nth-of-type(2n){
-	background-color:#5482d3;
-	border-color:#5482d3;
-}
-
-
-body {
-	font-size:100%;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-	font-weight: 300;
-	background-color:#7da1e2;
-}
-h1 {
-	text-shadow: 1px 1px 1px #fff;
-	font-family: "Marker Felt";
-}
-a {
-	font-weight:bold;
-	color:#F00;
-	-webkit-transition:all .5s ease;
-}
-a:hover {
-	color:#00F;
-}
-ul {
-	list-style:none;
-	margin:0;
-	padding:0;
-}
-	ul li {
-		
+  #schedule-load span {
+      margin: 0px 20px;
+       color: black;
 	}
-		ul li a {
-			display:block;
-			border-color:#333;
-			border-style:solid;
-			border-width:1px 0 0;
-			background-color: #f5f5f5;
-			line-height:2;
-			text-decoration: none;
-			padding:0 2%;
-		}
-			ul li a strong {
-				display:block;
-				font-weight:normal;
-				color:#333;
-			}
-		ul li:last-child a {
-			border-bottom-width:1px;
-		}
+	
 
-		ul li a:hover {
-			background-color: #eee;
-		}
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-section img, video {
-	max-width: 100%;
-	border:10px solid #eee;
-	box-shadow:0 0 5px #aaa;
-	border-radius: 5px;
-	margin-bottom: 1em;
-}
-video {
-	width:100%;
-}
-figure {
-	margin:0;
-}
-figcaption {
-	font-size:.8em;
-	color:#666;
-	font-style: italic;
-}
+#fade-in{
+	opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+ 
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+ 
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+	-webkit-animation-delay: 0.7s;
+	-moz-animation-delay: 0.7s;
+	animation-delay: 0.7s;
+}    
 
-/* header section */
-header {
-	position:relative;
-	padding:0 .5em;
-}
-	header img {
-		opacity:.8;
-		width:75px;
-		position:absolute;
-		top:-.8em;
-		-webkit-transition:all 1s ease;
-	}
-	header img:hover {
-		opacity:1;
-	}
-	header h1 {
-		font-family: "Marker Felt";
-		color:#000;
-		font-size: 1.6em;
-		margin-left:2.5em;
-
-	}
-
-/* Content section */
-article#content {
-	clear:left;
-}
-	article > section {
-		display:none;
-	}
-	article > section.active {
-		display:block;
-	}
-	article h1 {
-		margin-bottom: .5em;
-	}
-
-	article ul {
-		list-style: none;
-		margin-bottom:3em;
-	}
-
-/* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
-
-.col {
-	padding: 0 .5em;
-}
-.row .row {
-	margin: 0 -.5em;
-}
-
-.row:before, .row:after {
-	content: "";
-	display: table;
-}
-.row:after {
-	clear: both;
-}
-
-@media only screen {
-	.col {
-		float: left;
-		width: 100%;
-
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		        box-sizing: border-box;
-	}
-}
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-/* Styles */
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-/* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-	/* Styles */
-	table{
-		width:100%;
-		
-	}
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-	/* Styles */
-	.col {
-		width:50%;
-	}
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-	/* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-	/* Styles */
-}
-/**********
-iPad 3
-**********/
-@media
-only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape)
-and (-webkit-min-device-pixel-ratio : 2) {
-	/* Styles */
-}
-
-@media
-only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait)
-and (-webkit-min-device-pixel-ratio : 2) {
-	/* Styles */
-}
-/* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1024px) {
-	nav {
-		position:relative;
-		margin-bottom:0.4em;
-	}
-		nav ul li {
-			display:inline-block;
-			margin-left:-0.3em;
-		}
-			nav ul li a {
-				font-weight: normal;
-				display: inline-block;
-				background:#eee;
-				padding:5px 6em;
-				color:#333;
-				text-decoration: none;
-				-webkit-transition:all .2s ease;
-				border-left:solid;
-			}
-			nav ul li a:hover {
-				background:#e0e0e0;
-				box-shadow:0 0 5px #aaa;
-				color:#333;
-			}
-
-	.col {
-		width:50%;
-	}
-	aside {
-		text-align:left;
-	}
-		aside img {
-			float:left;
-			width:25%;
-			margin-right:3%;
-		}
-	table {
-		width:100%;
-	}
-}
-
-/* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-/* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media
-only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px)
-and (orientation : landscape)
-and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-@media
-only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px)
-and (orientation : portrait)
-and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}

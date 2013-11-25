@@ -126,9 +126,6 @@ var frisbeeApp = frisbeeApp || {};
 			score1 = document.getElementById('addScore1').innerHTML = object.team_1_score;
 	        score2 = document.getElementById('addScore2').innerHTML = object.team_2_score;
 			
-//	        document.getElementById('addScore1').innerHTML = score1;
-//	        document.getElementById('addScore2').innerHTML = score2;
-
 	    },  
 
 	   	setGameId: function (id) {
@@ -187,6 +184,13 @@ var frisbeeApp = frisbeeApp || {};
 
             console.log('verzonden');
 			document.getElementById('Succes').innerHTML = 'Jouw score is succesvol verstuurd!';
+			
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4 && xhr.status == 201) {
+					document.getElementById('Succes').innerHTML = 'Er is iets verkeerd gegaan tijdens het versturen';
+				} 
+			}	
+			
     	},
 
     	setCurrentSchedule: function(schedule) {
@@ -246,7 +250,7 @@ var frisbeeApp = frisbeeApp || {};
 
 		change: function (page) {
 			currentPage = page;
-            //var route = window.location.hash.slice(2),Waarom is deze in comment gezet?
+            //var route = window.location.hash.slice(2)
                 sections = qwery('section[data-route]'),
                 section = qwery('[data-route=' + page + ']')[0];  
 
@@ -273,15 +277,32 @@ var frisbeeApp = frisbeeApp || {};
 
 	frisbeeApp.page = {
 		schedule: function () {
-			var overlay = new ItpOverlay('content');
-			overlay.show();
-			$$.json('https://api.leaguevine.com/v1/game_scores/?tournament_id=19389&access_token=c0d139912b',{},function(data){
+			$$.get('https://api.leaguevine.com/v1/game_scores/?tournament_id=19389&access_token=c0d139912b',{},function(data){
 				frisbeeApp.controller.setCurrentSchedule(data);
+				document.getElementById('scheduleContent').style.opacity="1";
 				Transparency.render(qwery('[data-route=schedule')[0], frisbeeApp.schedule);	
 				Transparency.render(document.getElementById('gameObjects'), data.objects, frisbeeApp.gameObjects);
 				frisbeeApp.router.change('schedule');
 				console.log(data);
-				overlay.hide();
+					
+				document.getElementById('scroll-to-top').onclick = function () {
+    				scrollTo(document.body, 0, 100);
+					}
+
+			    function scrollTo(element, to, duration) {
+			        if (duration < 0) return;
+			        var difference = to - element.scrollTop;
+			        var perTick = difference / duration * 2;
+
+			    setTimeout(function() {
+			        element.scrollTop = element.scrollTop + perTick;
+			        scrollTo(element, to, duration - 2);
+			    }, 10);
+				
+				if(data == "") { 
+						alert("Er is wat verkeerd gegaan");
+					}
+				}
 			})			
 		},
 
@@ -293,15 +314,12 @@ var frisbeeApp = frisbeeApp || {};
 		},
 
 		ranking: function () {	
-			var overlay = new ItpOverlay('content');
-			overlay.show();
-			$$.json('https://api.leaguevine.com/v1/pools/?tournament_id=19389&access_token=29da126e2c',{},function(data){
+			$$.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389&access_token=29da126e2c',{},function(data){
+					document.getElementById('rankingContent').style.opacity="1";
 					Transparency.render(qwery('[data-route=ranking')[0], frisbeeApp.ranking);
 					Transparency.render(qwery('[data-route=Tournament.pools')[0], data);
 					console.log(data);
 					frisbeeApp.router.change('ranking');
-				overlay.hide();
-				overlay = null;
 				})
 		}
 	}
